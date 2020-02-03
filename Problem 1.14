@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <memory.h>
+
+void histogram(const int offset, const int range);
+
+int main(int argc , char * argv[]){
+    histogram(' ' , 95);
+    return 0;
+}
+
+void histogram(const int offset, const int range) {
+  int histogram[range];
+  memset(histogram, 0, sizeof(histogram));
+
+  int special = 0;
+
+  int c;
+  while ((c = getchar()) != EOF) {
+    if (c < offset || c >= (offset + range)) {
+        special++;
+    } else {
+        ++histogram[c - offset];
+    }
+  }
+
+  for (int i = 0; i < range; ++i) {
+    c = i + offset;
+    printf("%c ", c);
+    for (int j = 0; j < histogram[i]; ++j) {
+      putchar('x');
+    }
+    putchar('\n');
+  }
+
+  printf("- ");
+  for (int j = 0; j < special; j++) {
+    putchar('x');
+  }
+  putchar('\n');
+}
