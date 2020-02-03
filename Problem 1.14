@@ -27,7 +27,7 @@ void histogram(const int offset, const int range) {
     c = i + offset;
     printf("%c ", c);
     for (int j = 0; j < histogram[i]; ++j) {
-      putchar('x');
+      putchar('*');
     }
     putchar('\n');
   }
